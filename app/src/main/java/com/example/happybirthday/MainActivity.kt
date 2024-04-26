@@ -23,6 +23,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.happybirthday.ui.theme.HappyBirthdayTheme
+import androidx.compose.material3.Surface
+import androidx.compose.ui.graphics.Color
+
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +37,7 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = Color.Black
                 ) {
                     GreetingImage(
                         stringResource(R.string.happy_birthday_text),
@@ -44,27 +49,32 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+val customFontFamily = FontFamily(Font(R.font.dancingscript_variablefont_wght))
 @Composable
 fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
     // Create a column so that texts don't overlap
     Column(
-        verticalArrangement = Arrangement.Center,
-        modifier = modifier
+        verticalArrangement = Arrangement.Bottom,
+        modifier = modifier.padding(bottom = 100.dp)
     ) {
         Text(
             text = message,
-            fontSize = 100.sp,
+            fontSize = 75.sp,
             lineHeight = 116.sp,
             textAlign = TextAlign.Center,
+            color = Color.White,
+            fontFamily = customFontFamily,
             modifier = Modifier.padding(top = 16.dp)
         )
         Text(
             text = from,
-            fontSize = 36.sp,
+            fontSize = 16.sp,
+            color = Color.White,
+            fontFamily = customFontFamily,
             modifier = Modifier
-                .padding(top = 16.dp)
+                .padding(top = 56.dp)
                 .padding(end = 16.dp)
-                .align(alignment = Alignment.End)
+                .align(alignment = Alignment.CenterHorizontally)
 
         )
     }
@@ -75,7 +85,7 @@ fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) 
     // Create a box to overlap image and texts
     Box(modifier) {
         Image(
-            painter = painterResource(id = R.drawable.androidparty),
+            painter = painterResource(id = R.drawable.golden_christmas),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             alpha = 0.5F
